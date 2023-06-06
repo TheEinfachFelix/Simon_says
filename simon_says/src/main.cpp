@@ -20,10 +20,14 @@ void loop(){
   if  (level == 1)
   generate_sequence();//generate a sequence;
 
-  if (digitalRead(14)  == LOW || level != 1){
+  if (Get_Start_Button()  == LOW || level != 1){
+    Set_Start_Button_LED(0);
     show_sequence();    //show the sequence
     get_sequence();     //wait for your sequence
+    
   }
+  
+  //* Serial.println(digitalRead(14));
 }
 
 void  show_sequence(){
@@ -90,7 +94,7 @@ void  get_sequence(){
       }
 
 // beide
-      if (Get_Rechts_Button() == LOW && !Get_Links_Button() == LOW){
+      if (Get_Mitte_Button() == LOW){
         Serial.println("Beide");
         Set_Links_Auge(1);
         Set_Rechts_Auge(1);
@@ -121,6 +125,7 @@ void generate_sequence(){
 void wrong_sequence(){
   Serial.println("wrong_sequence()");
   int x = 100;
+  Set_Start_Button_LED(1);
   for (int i = 0; i < 13;  i++)
     {
     Set_Links_Auge(1);
@@ -129,23 +134,26 @@ void wrong_sequence(){
     Set_Links_Auge(0);
     Set_Rechts_Auge(0);
     delay(x);
-
+    
     }
   level  = 1;
   velocity = 1000;
+  
 }
 
 void right_sequence(){
   Serial.println("right_sequence()");
   Set_Links_Auge(0);
   Set_Rechts_Auge(0);
+  Set_Start_Button_LED(0);
   delay(250);
-
   Set_Links_Auge(1);
   Set_Rechts_Auge(1);
+  Set_Start_Button_LED(1);
   delay(500);
   Set_Links_Auge(0);
   Set_Rechts_Auge(0);
+  Set_Start_Button_LED(0);
   delay(500);
 
   if  (level < MAX_LEVEL);

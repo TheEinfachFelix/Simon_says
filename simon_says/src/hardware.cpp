@@ -8,13 +8,24 @@ int Auge_Rechts = 0;
 bool State_Auge_Rechts;
 int Button_Rechts = 16;
 
+int Button_Mitte = 13;
+
+int Button_Start = 14;
+bool State_Start_Button_LED;
+int Button_Start_LED = 15;
+
 
 void Setup(){
-    pinMode(2, OUTPUT);
-    pinMode(0, OUTPUT);
-    pinMode(12, INPUT);
-    pinMode(16, INPUT);
-    pinMode(A0, INPUT_PULLUP);
+    pinMode(Auge_Links, OUTPUT);
+    pinMode(Auge_Rechts, OUTPUT);
+    pinMode(Button_Start_LED, OUTPUT);
+
+    pinMode(Button_Links, INPUT);
+    pinMode(Button_Rechts, INPUT);
+    pinMode(Button_Mitte, INPUT);
+    pinMode(Button_Start, INPUT);
+
+    Set_Start_Button_LED(1);
 }
 
 /////////////////////////////////////-Auge-/////////////////////////////////////
@@ -43,4 +54,22 @@ bool Get_Links_Button(){
 
 bool Get_Rechts_Button(){
     return digitalRead(Button_Rechts);
+}
+
+bool Get_Mitte_Button(){
+    return digitalRead(Button_Mitte);
+}
+
+/////////////////////////////////////-Start-Button-/////////////////////////////////////
+bool Get_Start_Button(){
+    return digitalRead(Button_Start);
+}
+
+void Set_Start_Button_LED(bool set){
+    digitalWrite(Button_Start_LED , set);
+    State_Start_Button_LED = set;
+}
+
+bool Get_Start_Button_LED(){
+    return State_Start_Button_LED;
 }
