@@ -13,3 +13,5 @@ bool Get_Mitte_Button();
 bool Get_Start_Button();
 void Set_Start_Button_LED(bool set);
 bool Get_Start_Button_LED();
+void Set_Nase_LED(bool set);
+bool Get_Nase_LED();

@@ -14,11 +14,15 @@ int Button_Start = 14;
 bool State_Start_Button_LED;
 int Button_Start_LED = 15;
 
+int Nase_LED = 4;
+bool State_Nase_LED;
+
 
 void Setup(){
     pinMode(Auge_Links, OUTPUT);
     pinMode(Auge_Rechts, OUTPUT);
     pinMode(Button_Start_LED, OUTPUT);
+    pinMode(Nase_LED, OUTPUT);
 
     pinMode(Button_Links, INPUT);
     pinMode(Button_Rechts, INPUT);
@@ -26,6 +30,7 @@ void Setup(){
     pinMode(Button_Start, INPUT);
 
     Set_Start_Button_LED(1);
+
 }
 
 /////////////////////////////////////-Auge-/////////////////////////////////////
@@ -72,4 +77,13 @@ void Set_Start_Button_LED(bool set){
 
 bool Get_Start_Button_LED(){
     return State_Start_Button_LED;
+}
+
+void Set_Nase_LED(bool set){
+    digitalWrite(Nase_LED , set);
+    State_Nase_LED = set;
+}
+
+bool Get_Nase_LED(){
+    return State_Nase_LED;
 }

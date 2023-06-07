@@ -143,17 +143,11 @@ void wrong_sequence(){
 
 void right_sequence(){
   Serial.println("right_sequence()");
-  Set_Links_Auge(0);
-  Set_Rechts_Auge(0);
-  Set_Start_Button_LED(0);
+  Set_Nase_LED(0);
   delay(250);
-  Set_Links_Auge(1);
-  Set_Rechts_Auge(1);
-  Set_Start_Button_LED(1);
+  Set_Nase_LED(1);
   delay(500);
-  Set_Links_Auge(0);
-  Set_Rechts_Auge(0);
-  Set_Start_Button_LED(0);
+  Set_Nase_LED(0);
   delay(500);
 
   if  (level < MAX_LEVEL);
